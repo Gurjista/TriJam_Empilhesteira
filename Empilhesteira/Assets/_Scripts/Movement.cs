@@ -10,8 +10,20 @@ public class Movement : MonoBehaviour
     private InputActions inputActions; // Referência para o InputActions
     private InputAction _leftMoveAction;
     private InputAction _rightMoveAction;
+    private InputAction _grabAction;
     private float leftMovementInput; // Armazena o valor do input de movimento para a esquerda
     private float rightMovementInput; // Armazena o valor do input de movimento para a direita
+
+    // Coisas do GrabObject
+    [SerializeField] private Transform _grabPoint;
+
+    private float _grabInput;
+    [SerializeField] private Transform _rayPoint;
+    [SerializeField] private float _rayDistance = 5f;
+
+    private GameObject _grabbedObject;
+    private int layerIndex;
+    private RaycastHit2D hitInfo;
 
     private void Awake()
     {
@@ -19,10 +31,16 @@ public class Movement : MonoBehaviour
         inputActions.Enable(); // Habilita o InputActions
     }
 
+    private void Start()
+    {
+        layerIndex = LayerMask.NameToLayer("Object");
+    }
+
     private void OnEnable()
     {
         _leftMoveAction = inputActions.Player.MovementLeft;
         _rightMoveAction = inputActions.Player.MovementRight;
+        _grabAction = inputActions.Player.Grab;
 
         _leftMoveAction.performed += OnLeftMovement; // Assina o evento de movimento para a esquerda
         _leftMoveAction.canceled += OnLeftMovement; // Assina o evento de cancelamento de movimento para a esquerda
@@ -30,6 +48,7 @@ public class Movement : MonoBehaviour
         _rightMoveAction.performed += OnRightMovement; // Assina o evento de movimento para a direita
         _rightMoveAction.canceled += OnRightMovement; // Assina o evento de cancelamento de movimento para a direita
 
+        _grabAction.performed += OnGrab;
         //inputActions.Player.Movement.Left.performed += OnLeftMovementPerformed; // Assina o evento de movimento para a esquerda
         //inputActions.Player.Movement.Left.canceled += OnLeftMovementCanceled; // Assina o evento de cancelamento de movimento para a esquerda
         //inputActions.Player.Movement.Right.performed += OnRightMovementPerformed; // Assina o evento de movimento para a direita
@@ -43,6 +62,8 @@ public class Movement : MonoBehaviour
 
         _rightMoveAction.performed -= OnRightMovement;
         _rightMoveAction.canceled -= OnRightMovement;
+
+        _grabAction.performed -= OnGrab;
         //inputActions.Player.Left.performed -= OnLeftMovementPerformed; // Remove a assinatura do evento de movimento para a esquerda
         //inputActions.Player.Left.canceled -= OnLeftMovementCanceled; // Remove a assinatura do evento de cancelamento de movimento para a esquerda
         //inputActions.Player.Right.performed -= OnRightMovementPerformed; // Remove a assinatura do evento de movimento para a direita
@@ -70,8 +91,34 @@ public class Movement : MonoBehaviour
     //    rightMovementInput = 0f; // Reseta o valor do input de movimento para a direita
     //}
 
+    private void OnGrab(InputAction.CallbackContext context)
+    {
+        _grabInput = context.ReadValue<float>();
+        if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
+        {
+            if (_grabInput > 0 && _grabbedObject == null)
+            {
+                Debug.Log("Grabbed object");
+                _grabbedObject = hitInfo.collider.gameObject;
+                _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                _grabbedObject.transform.position = _grabPoint.position;
+                _grabbedObject.transform.SetParent(transform);
+            }
+            else if (_grabInput > 0)
+            {
+                _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                _grabbedObject.transform.SetParent(null);
+                _grabbedObject = null;
+            }
+        }
+    }
+
     private void Update()
     {
+        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, transform.forward, _rayDistance);
+
+        Debug.DrawRay(_rayPoint.position, transform.forward * _rayDistance, Color.red);
+
         if (leftMovementInput > 0)
         {
             // Rotaciona para a esquerda
