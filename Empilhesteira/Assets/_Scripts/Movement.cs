@@ -94,8 +94,10 @@ public class Movement : MonoBehaviour
     private void OnGrab(InputAction.CallbackContext context)
     {
         _grabInput = context.ReadValue<float>();
+
         if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
         {
+            Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
             if (_grabInput > 0 && _grabbedObject == null)
             {
                 Debug.Log("Grabbed object");
@@ -115,9 +117,9 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, transform.forward, _rayDistance);
+        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, transform.up, _rayDistance);
 
-        Debug.DrawRay(_rayPoint.position, transform.forward * _rayDistance, Color.red);
+        Debug.DrawRay(_rayPoint.position, transform.up * _rayDistance, Color.cyan);
 
         if (leftMovementInput > 0)
         {
