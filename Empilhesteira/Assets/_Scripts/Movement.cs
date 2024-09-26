@@ -95,13 +95,13 @@ public class Movement : MonoBehaviour
     {
         _grabInput = context.ReadValue<float>();
 
-        if (hitInfo.collider != null && hitInfo.collider.gameObject.layer == layerIndex)
+        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, transform.up, _rayDistance);
+        if (hitInfo.collider != null && hitInfo.collider.gameObject.tag == "Object")
         {
-            Debug.Log("Hit object: " + hitInfo.collider.gameObject.name);
             if (_grabInput > 0 && _grabbedObject == null)
             {
-                Debug.Log("Grabbed object");
                 _grabbedObject = hitInfo.collider.gameObject;
+                _grabbedObject.transform.rotation = transform.rotation;
                 _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 _grabbedObject.transform.position = _grabPoint.position;
                 _grabbedObject.transform.SetParent(transform);
@@ -117,8 +117,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(_rayPoint.position, transform.up, _rayDistance);
-
         Debug.DrawRay(_rayPoint.position, transform.up * _rayDistance, Color.cyan);
 
         if (leftMovementInput > 0)
