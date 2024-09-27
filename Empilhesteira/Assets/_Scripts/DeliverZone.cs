@@ -13,7 +13,8 @@ public class DeliverZone : MonoBehaviour
         if (collision.gameObject.tag == "Object")
         {
             OnDeliver.Raise(this, _timeToAdd);
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 }
