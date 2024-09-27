@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2486060151188303054}
   - component: {fileID: 8319433600596447528}
   - component: {fileID: 8471219847419151506}
+  - component: {fileID: 6073991510024510350}
   m_Layer: 6
   m_Name: Caixa
   m_TagString: Object
@@ -171,5 +172,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791c1c7abf9831243aea28ff9d3f111d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDestroy: {fileID: 11400000, guid: a2577b551d5b0394bb2dc40c274faaa4, type: 2}
   _timeToAdd: -20
+  _timeToDeactivate: 20
+  _timer: 0
+  OnDestroy: {fileID: 11400000, guid: a2577b551d5b0394bb2dc40c274faaa4, type: 2}
+  OnDespawned: {fileID: 11400000, guid: 8214d23a169bdbc4cab77bfc0efe3a8c, type: 2}
+--- !u!114 &6073991510024510350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3777176625610052582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a70bd758d0f95343a76af53690362b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 78c5dc5cf7d3e0d43bb16146a91037fa, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8471219847419151506}
+        m_TargetAssemblyTypeName: Caixa, Assembly-CSharp
+        m_MethodName: OnGrabbed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

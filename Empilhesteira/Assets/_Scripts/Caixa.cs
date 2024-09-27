@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Caixa : MonoBehaviour
 {
-    public GameEvent OnDestroy;
     [SerializeField] private float _timeToAdd = -20f;
     [SerializeField] private float _timeToDeactivate = 20f;
-    private float _timer;
+    [SerializeField] private float _timer;
+
+    [Header("Events")]
+    public GameEvent OnDestroy;
+
+    public GameEvent OnDespawned;
 
     // Start is called before the first frame update
     private void Start()
@@ -22,6 +26,9 @@ public class Caixa : MonoBehaviour
         if (_timer >= _timeToDeactivate)
         {
             _timer = 0f;
+            OnDespawned.Raise(this, null);
+            OnDestroy.Raise(this, _timeToAdd);
+            gameObject.transform.rotation = Quaternion.identity;
             gameObject.SetActive(false);
         }
     }
@@ -32,7 +39,13 @@ public class Caixa : MonoBehaviour
         {
             OnDestroy.Raise(this, _timeToAdd);
             _timer = 0f;
+            gameObject.transform.rotation = Quaternion.identity;
             gameObject.SetActive(false);
         }
+    }
+
+    public void OnGrabbed(Component sender, object data)
+    {
+        _timer = 0f;
     }
 }

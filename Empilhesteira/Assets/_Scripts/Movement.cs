@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem; // Importar o novo Input System
 
@@ -24,6 +25,8 @@ public class Movement : MonoBehaviour
     private GameObject _grabbedObject;
     private int layerIndex;
     private RaycastHit2D hitInfo;
+
+    public GameEvent OnBoxGrabbed;
 
     private void Awake()
     {
@@ -105,13 +108,29 @@ public class Movement : MonoBehaviour
                 _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 _grabbedObject.transform.position = _grabPoint.position;
                 _grabbedObject.transform.SetParent(transform);
+                OnBoxGrabbed.Raise(this, null);
             }
             else if (_grabInput > 0)
             {
-                _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = false;
-                _grabbedObject.transform.SetParent(null);
-                _grabbedObject = null;
+                BoxUngrabbed();
             }
+        }
+    }
+
+    private void BoxUngrabbed()
+    {
+        _grabbedObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        _grabbedObject.transform.SetParent(null);
+        _grabbedObject.transform.rotation = Quaternion.identity;
+        _grabbedObject = null;
+    }
+
+    public void OnBoxDespawned(Component sender, object data)
+    {
+        if (_grabbedObject != null)
+        {
+            _grabbedObject.SetActive(false);
+            BoxUngrabbed();
         }
     }
 

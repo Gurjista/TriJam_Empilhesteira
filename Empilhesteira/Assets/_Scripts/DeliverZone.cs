@@ -14,6 +14,7 @@ public class DeliverZone : MonoBehaviour
         {
             OnDeliver.Raise(this, _timeToAdd);
             //Destroy(collision.gameObject);
+            collision.gameObject.transform.rotation = Quaternion.identity;
             collision.gameObject.SetActive(false);
         }
     }

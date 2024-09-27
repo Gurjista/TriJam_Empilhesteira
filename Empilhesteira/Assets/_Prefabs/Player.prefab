@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4041995164026538023}
   - component: {fileID: 4818709015556377584}
   - component: {fileID: 6105995080739588012}
+  - component: {fileID: 5564109457054724548}
+  - component: {fileID: 7991767819177318835}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -126,6 +128,63 @@ MonoBehaviour:
   _grabPoint: {fileID: 8193233721169755606}
   _rayPoint: {fileID: 3997303637405933774}
   _rayDistance: 0.5
+  OnBoxGrabbed: {fileID: 11400000, guid: 78c5dc5cf7d3e0d43bb16146a91037fa, type: 2}
+--- !u!114 &5564109457054724548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252221606941698848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a70bd758d0f95343a76af53690362b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 916f54681a1f0504696120d60749be82, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6105995080739588012}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnBoxDespawned
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7991767819177318835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252221606941698848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a70bd758d0f95343a76af53690362b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: 8214d23a169bdbc4cab77bfc0efe3a8c, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6105995080739588012}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnBoxDespawned
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1235466513641114762
 GameObject:
   m_ObjectHideFlags: 0
