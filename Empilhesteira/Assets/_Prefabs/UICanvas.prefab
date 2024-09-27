@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 3902815118654580707}
   - component: {fileID: 1882319140858289540}
   - component: {fileID: 6501131626309471582}
+  - component: {fileID: 947691636399319320}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -265,6 +266,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameEvent: {fileID: 11400000, guid: 916f54681a1f0504696120d60749be82, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1882319140858289540}
+        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
+        m_MethodName: AddTime
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &947691636399319320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364706829915007857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a70bd758d0f95343a76af53690362b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameEvent: {fileID: 11400000, guid: a2577b551d5b0394bb2dc40c274faaa4, type: 2}
   _response:
     m_PersistentCalls:
       m_Calls:
