@@ -27,10 +27,14 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void AddTime(float seconds)
+    public void AddTime(Component sender, object data)
     {
-        currentTime += seconds; // Adiciona tempo ao timer atual
-        UpdateTimerDisplay(); // Atualiza a exibição do timer
+        if (data is float)
+        {
+            float seconds = (float)data; // Converte o objeto data para float
+            currentTime += seconds; // Adiciona tempo ao timer atual
+            UpdateTimerDisplay(); // Atualiza a exibição do timer
+        }
     }
 
     private void UpdateTimerDisplay()
