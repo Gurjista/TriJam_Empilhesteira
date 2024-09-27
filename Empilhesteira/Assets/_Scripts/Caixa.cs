@@ -21,6 +21,7 @@ public class Caixa : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= _timeToDeactivate)
         {
+            _timer = 0f;
             gameObject.SetActive(false);
         }
     }
@@ -30,6 +31,7 @@ public class Caixa : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             OnDestroy.Raise(this, _timeToAdd);
+            _timer = 0f;
             gameObject.SetActive(false);
         }
     }
