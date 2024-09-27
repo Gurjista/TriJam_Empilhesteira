@@ -6,15 +6,23 @@ public class Caixa : MonoBehaviour
 {
     public GameEvent OnDestroy;
     [SerializeField] private float _timeToAdd = -20f;
+    [SerializeField] private float _timeToDeactivate = 20f;
+    private float _timer;
 
     // Start is called before the first frame update
     private void Start()
     {
+        _timer = 0f;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        _timer += Time.deltaTime;
+        if (_timer >= _timeToDeactivate)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

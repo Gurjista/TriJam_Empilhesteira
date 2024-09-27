@@ -123,25 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &201674193 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3777176625610052582, guid: 72e4bd8283f58be40b63017ce3314033, type: 3}
-  m_PrefabInstance: {fileID: 2196130957884735603}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &201674194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201674193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 791c1c7abf9831243aea28ff9d3f111d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDestroy: {fileID: 11400000, guid: a2577b551d5b0394bb2dc40c274faaa4, type: 2}
-  _timeToAdd: -20
 --- !u!1 &283206614
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,17 +823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Caixa
       objectReference: {fileID: 0}
-    - target: {fileID: 8319433600596447528, guid: 72e4bd8283f58be40b63017ce3314033, type: 3}
-      propertyPath: m_Mass
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3777176625610052582, guid: 72e4bd8283f58be40b63017ce3314033, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 201674194}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72e4bd8283f58be40b63017ce3314033, type: 3}
 --- !u!1001 &5195724895356021101
 PrefabInstance:
