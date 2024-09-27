@@ -28,6 +28,8 @@ public class Movement : MonoBehaviour
 
     public GameEvent OnBoxGrabbed;
 
+    [SerializeField] private Animator _animator;
+
     private void Awake()
     {
         inputActions = new InputActions(); // Inicializa o InputActions
@@ -77,6 +79,7 @@ public class Movement : MonoBehaviour
     public void OnLeftMovement(InputAction.CallbackContext context)
     {
         leftMovementInput = context.ReadValue<float>(); // Lê o valor do input de movimento para a esquerda
+        _animator.SetFloat("Speed", Mathf.Abs(leftMovementInput));
     }
 
     //public void OnLeftMovementCanceled(InputAction.CallbackContext context)
@@ -87,6 +90,7 @@ public class Movement : MonoBehaviour
     public void OnRightMovement(InputAction.CallbackContext context)
     {
         rightMovementInput = context.ReadValue<float>(); // Lê o valor do input de movimento para a direita
+        _animator.SetFloat("Speed", Mathf.Abs(rightMovementInput));
     }
 
     //public void OnRightMovementCanceled(InputAction.CallbackContext context)
@@ -140,26 +144,22 @@ public class Movement : MonoBehaviour
 
         if (leftMovementInput > 0)
         {
-            // Rotaciona para a esquerda
             this.transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
             this.transform.RotateAround(rotateAroundLeft.position, Vector3.forward, rotateSpeed * Time.deltaTime);
         }
         else if (leftMovementInput < 0)
         {
-            // Rotaciona para a direita
             this.transform.Rotate(Vector3.forward, -rotateSpeed * Time.deltaTime);
             this.transform.RotateAround(rotateAroundLeft.position, Vector3.forward, -rotateSpeed * Time.deltaTime);
         }
 
         if (rightMovementInput > 0)
         {
-            // Rotaciona para a esquerda
             this.transform.Rotate(Vector3.forward, -rotateSpeed * Time.deltaTime);
             this.transform.RotateAround(rotateAroundRight.position, Vector3.forward, -rotateSpeed * Time.deltaTime);
         }
         else if (rightMovementInput < 0)
         {
-            // Rotaciona para a direita
             this.transform.Rotate(Vector3.forward, rotateSpeed * Time.deltaTime);
             this.transform.RotateAround(rotateAroundRight.position, Vector3.forward, rotateSpeed * Time.deltaTime);
         }
