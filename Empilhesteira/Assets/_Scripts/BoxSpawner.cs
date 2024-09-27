@@ -31,7 +31,7 @@ public class BoxSpawner : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.4f);
-            bool hasBox = false;
+            hasBox = false;
             foreach (var collider in colliders)
             {
                 if (collider.gameObject.tag == "Object")
