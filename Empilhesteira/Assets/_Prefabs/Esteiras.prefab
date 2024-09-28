@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Esteira
       objectReference: {fileID: 0}
+    - target: {fileID: 8888562604801301380, guid: 7eac82f8b9c672f49ab16cc340ad3c76, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
