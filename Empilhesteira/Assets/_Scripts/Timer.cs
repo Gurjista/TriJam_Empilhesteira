@@ -1,16 +1,17 @@
 using TMPro; // Importar TextMeshPro
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float initialTime = 300f; // Tempo inicial em segundos (5 minutos)
     private float currentTime; // Tempo atual do timer
-    public TextMeshProUGUI timerText; // Referência para o objeto TextMeshPro
+    public TextMeshProUGUI timerText; // Referï¿½ncia para o objeto TextMeshPro
 
     private void Start()
     {
         currentTime = initialTime; // Inicializa o timer com o tempo inicial
-        UpdateTimerDisplay(); // Atualiza a exibição do timer
+        UpdateTimerDisplay(); // Atualiza a exibiï¿½ï¿½o do timer
     }
 
     private void Update()
@@ -18,12 +19,13 @@ public class Timer : MonoBehaviour
         if (currentTime > 0)
         {
             currentTime -= Time.deltaTime; // Diminui o tempo atual com o tempo decorrido
-            UpdateTimerDisplay(); // Atualiza a exibição do timer
+            UpdateTimerDisplay(); // Atualiza a exibiï¿½ï¿½o do timer
         }
         else
         {
-            currentTime = 0; // Garante que o tempo não fique negativo
-            UpdateTimerDisplay(); // Atualiza a exibição do timer
+            currentTime = 0; // Garante que o tempo nï¿½o fique negativo
+            UpdateTimerDisplay(); // Atualiza a exibiï¿½ï¿½o do timer
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -33,7 +35,7 @@ public class Timer : MonoBehaviour
         {
             float seconds = (float)data; // Converte o objeto data para float
             currentTime += seconds; // Adiciona tempo ao timer atual
-            UpdateTimerDisplay(); // Atualiza a exibição do timer
+            UpdateTimerDisplay(); // Atualiza a exibiï¿½ï¿½o do timer
         }
     }
 
