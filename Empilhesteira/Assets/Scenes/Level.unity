@@ -3258,6 +3258,10 @@ PrefabInstance:
       propertyPath: rotateSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6105995080739588012, guid: 5ebb3ca50a01b6e4f8fdf35a8215006c, type: 3}
+      propertyPath: _rayDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6853266976768703096, guid: 5ebb3ca50a01b6e4f8fdf35a8215006c, type: 3}
       propertyPath: m_SortingOrder
       value: 1

@@ -123,12 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83922a55c1802c94da72f191d16cb679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 25
+  rotateSpeed: 100
   rotateAroundLeft: {fileID: 6029342605350725771}
   rotateAroundRight: {fileID: 3872266509780644179}
   _grabPoint: {fileID: 8193233721169755606}
   _rayPoint: {fileID: 3997303637405933774}
-  _rayDistance: 0.5
+  _rayDistance: 0.7
   OnBoxGrabbed: {fileID: 11400000, guid: 78c5dc5cf7d3e0d43bb16146a91037fa, type: 2}
   _animator: {fileID: 8632349150920296818}
 --- !u!114 &5564109457054724548
@@ -227,7 +227,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e6396b06e43ff694ebc9437b18db1fd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
